@@ -81,18 +81,44 @@ function leerUsuarios() {
 	databaseUsuarios = firebase.database().ref("usuarios")
 }
 
-function cargarPersona(x) {
-	let dbUsusarios = firebase.database().ref('usuarios');
+function cargarPersona() {
+	helper = "<div class='col-md-3'>\
+	<a href='#'>\
+	<img class='img-thumbnail' src='http://placehold.it/200x200' alt=''>\
+	</a>\
+	</div>\
+	<div class='col-md-5'>\
+	<h3>Project Two</h3>\
+	<p></p>\
+	<a class='btn btn-primary' href='#'>View Project</a>\
+	</div>"
+	let databaseUsuarios = firebase.database().ref('usuarios');
 	databaseUsuarios.on('value', snapshot =>{
   	snapshot.forEach(snap => {
+  		let div_padre = document.createElement('div');
   		let div = document.createElement('div');
-  		let input = document.createElement('input');
-  		div.ClassList = "col-md-3";
-  		input.type = "image";
-  		input.src = snap.val().photoURL;
-  		div.ClassList = "col-md-5";
-
-  		$("#fila").append(div);
+  		let nombre_apellido = document.createElement('h3');
+  		let datos = document.createElement('ul');
+  		let edad = document.createElement('li');
+  		let email = document.createElement('li');
+  		let telefono = document.createElement('li');
+  		let experiencias = document.createElement('li');
+  		div_padre.className = "card";
+  		div.className = "card-block";
+  		nombre_apellido.className = "card-title";
+  		nombre_apellido.innerText = snap.val().nombre + " " +snap.val().apellido;
+  		edad.innerText = snap.val().edad;
+		email.innerText = snap.val().email;
+		telefono.innerText = snap.val().telefono;
+		experiencias.innerText = snap.val().experiencias;
+  		div.append(nombre_apellido);
+  		datos.append(edad);
+  		datos.append(email);
+  		datos.append(telefono);
+  		datos.append(experiencias);
+  		div.append(datos);
+		div_padre.append(div);
+  		$("#fila").append(div_padre);
 	})
   });
 
