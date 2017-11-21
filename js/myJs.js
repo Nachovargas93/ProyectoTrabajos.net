@@ -39,8 +39,7 @@ function register() {
 		"telefono": "",
 		"experiencias": "",
 		"uid":"",
-		"Foto:"
-	};
+ 	}
 
 	console.log(user);
 
@@ -50,8 +49,6 @@ function register() {
 	user.email = email
 	user.telefono = telefono
 	user.experiencias = experiencias
-
-
 
 	firebase.auth().createUserWithEmailAndPassword(user.email, password).then(function(usuario) {
 		var db = firebase.database();
@@ -82,6 +79,18 @@ function leerUsuarios() {
 	databaseUsuarios = firebase.database().ref("usuarios")
 }
 
+function escribirDatos(json) {
+    var elemento = firebase.database().ref("/usuario/").push(json);
+    var storageRef = firebase.storage().ref().child("usuarios/" + elemento.key + ".jpg");
+    var file = document.getElementById('SubirFoto').files[0];
+    console.log(file);
+    storageRef.put(file).then(function (snapshot) {
+        console.log('Uploaded a blob or file!');
+    });
+    cargarPersona();
+}
+
+
 function cargarPersona() {
 	helper = "<div class='col-md-3'>\
 	<a href='#'>\
@@ -104,7 +113,12 @@ function cargarPersona() {
   		let email = document.createElement('li');
   		let telefono = document.createElement('li');
   		let experiencias = document.createElement('li');
-  		let Foto_de_Perfil = document.createElement('input');
+
+  		var imagen = document.createElement('img');
+        firebase.storage().ref().child("usuarios/" + childSnapshot.key + ".jpg").getDownloadURL().then(function (url) {
+        imagen.src = url;
+        });
+        imagen.classList = "card-img-top"
   		div_padre.className = "card";
   		div.className = "card-block";
   		nombre_apellido.className = "card-title";
@@ -113,15 +127,14 @@ function cargarPersona() {
 		email.innerText = snap.val().email;
 		telefono.innerText = snap.val().telefono;
 		experiencias.innerText = snap.val().experiencias;
-		input.type = "image";
-		input.src = snap.val().photoURL;
+
   		div.append(nombre_apellido);
   		datos.append(edad);
   		datos.append(email);
   		datos.append(telefono);
   		datos.append(experiencias);
   		div.append(datos);
-  		input.append(Foto_de_Perfil);
+  		div.append(imagen);
 		div_padre.append(div);
   		$("#fila").append(div_padre);
 	})
@@ -133,4 +146,4 @@ $(document).ready(function() {
 	cargar("login");
 	firebase.initializeApp(config);
 });
-	
+
