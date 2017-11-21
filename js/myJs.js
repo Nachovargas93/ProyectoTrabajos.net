@@ -38,7 +38,8 @@ function register() {
 		"email": "",
 		"telefono": "",
 		"experiencias": "",
-		"uid":""
+		"uid":"",
+		"Foto:"
 	};
 
 	console.log(user);
@@ -103,6 +104,7 @@ function cargarPersona() {
   		let email = document.createElement('li');
   		let telefono = document.createElement('li');
   		let experiencias = document.createElement('li');
+  		let Foto_de_Perfil = document.createElement('input');
   		div_padre.className = "card";
   		div.className = "card-block";
   		nombre_apellido.className = "card-title";
@@ -111,12 +113,15 @@ function cargarPersona() {
 		email.innerText = snap.val().email;
 		telefono.innerText = snap.val().telefono;
 		experiencias.innerText = snap.val().experiencias;
+		input.type = "image";
+		input.src = snap.val().photoURL;
   		div.append(nombre_apellido);
   		datos.append(edad);
   		datos.append(email);
   		datos.append(telefono);
   		datos.append(experiencias);
   		div.append(datos);
+  		input.append(Foto_de_Perfil);
 		div_padre.append(div);
   		$("#fila").append(div_padre);
 	})

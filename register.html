@@ -31,10 +31,17 @@
 				<td>Contraseña: </td>
 				<td><input class="form-control" id="txt_password" type="password" placeholder="Ingrese la contraseña..."></td>
 			</tr>
+			<tr>
+				<td>Foto de Perfil: </td>
+				  <td class="form-group">
+				    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+				  </td>
+				</form>
+			</tr>
 
 			<tr>
 				<td></td>
-				<td><button class="btn btn-primary" onclick="register()">Registrarse</button></td>
+				<td><button class="btn btn-primary" onclick="register(), cargar('personas')">Registrarse</button></td>
 			</tr>
 		</table>
 	</center>
