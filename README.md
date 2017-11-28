@@ -28,3 +28,6 @@ Al igual que para las personas, esta pagina sirve para empresas que necesiten em
 ***
 
 Desarrollo del proyecto en Trello: https://trello.com/b/20zU6KMi/proyecto-htmljscss
+
+### Contacto:
+: nachovargas93@gmail.com
