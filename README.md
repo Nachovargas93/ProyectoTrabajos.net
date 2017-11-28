@@ -7,7 +7,7 @@
  : 5to Año "C" ITS Villada
  
  **Asignatura**
- : Programacion 2
+ : Programacion 2 & Sistemas de Informacion
 
 # Descripcion
 ***
@@ -20,7 +20,11 @@ Al igual que para las personas, esta pagina sirve para empresas que necesiten em
 
 # Dependencias
 
-* Bootstrap
-* Firebase
-* jQuery
-* JSON
+* [Bootstrap](http://getbootstrap.com/): La UI para diseñar paginas web modernas
+* [Firebase](https://firebase.google.com/): Base de datos
+* [jQuery](https://jquery.com/): Es un framework de Javascript
+* JSON: Formato de texto ligero para el intercambio de datos
+
+***
+
+Desarrollo del proyecto en Trello: https://trello.com/b/20zU6KMi/proyecto-htmljscss
